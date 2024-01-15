@@ -28,10 +28,12 @@ namespace StoreLib.Services
         public static async Task<string> SyncUpdatesAsync(string WuCategoryID, string MSAToken = null)
         {
             HttpContent httpContent = new StringContent(String.Format(GetResourceTextFile("WUIDRequest.xml"), await GetCookieAsync(), WuCategoryID, MSAToken ?? _msaToken), Encoding.UTF8, "application/soap+xml"); //Load in the Xml for this FE3 request and format it a cookie and the provided WuCategoryID.
-            HttpRequestMessage httpRequest = new HttpRequestMessage();
-            httpRequest.RequestUri = Endpoints.FE3Delivery;
-            httpRequest.Content = httpContent;
-            httpRequest.Method = HttpMethod.Post;
+            HttpRequestMessage httpRequest = new HttpRequestMessage
+            {
+                RequestUri = Endpoints.FE3Delivery,
+                Content = httpContent,
+                Method = HttpMethod.Post
+            };
             HttpResponseMessage httpResponse = await _httpClient.SendAsync(httpRequest,  new System.Threading.CancellationToken());
             string content = await httpResponse.Content.ReadAsStringAsync();
             content = HttpUtility.HtmlDecode(content);
@@ -41,10 +43,12 @@ namespace StoreLib.Services
         public static async Task<IList<PackageInstance>> GetPackageInstancesAsync(string WuCategoryID, string MSAToken)
         {
             HttpContent httpContent = new StringContent(String.Format(GetResourceTextFile("WUIDRequest.xml"), await GetCookieAsync(), WuCategoryID, MSAToken ?? _msaToken), Encoding.UTF8, "application/soap+xml"); //Load in the Xml for this FE3 request and format it a cookie and the provided WuCategoryID.
-            HttpRequestMessage httpRequest = new HttpRequestMessage();
-            httpRequest.RequestUri = Endpoints.FE3Delivery;
-            httpRequest.Content = httpContent;
-            httpRequest.Method = HttpMethod.Post;
+            HttpRequestMessage httpRequest = new HttpRequestMessage
+            {
+                RequestUri = Endpoints.FE3Delivery,
+                Content = httpContent,
+                Method = HttpMethod.Post
+            };
             HttpResponseMessage httpResponse = await _httpClient.SendAsync(httpRequest, new System.Threading.CancellationToken());
             string content = await httpResponse.Content.ReadAsStringAsync();
             content = HttpUtility.HtmlDecode(content);
@@ -77,10 +81,12 @@ namespace StoreLib.Services
         {
             XmlDocument doc = new XmlDocument();
             HttpContent httpContent = new StringContent(GetResourceTextFile("GetCookie.xml"), Encoding.UTF8, "application/soap+xml");//Loading the request xml from a file to keep things nice and tidy.
-            HttpRequestMessage httpRequest = new HttpRequestMessage();
-            httpRequest.RequestUri = Endpoints.FE3Delivery;
-            httpRequest.Content = httpContent;
-            httpRequest.Method = HttpMethod.Post;
+            HttpRequestMessage httpRequest = new HttpRequestMessage
+            {
+                RequestUri = Endpoints.FE3Delivery,
+                Content = httpContent,
+                Method = HttpMethod.Post
+            };
             HttpResponseMessage httpResponse = await _httpClient.SendAsync(httpRequest, new System.Threading.CancellationToken()); 
             doc.LoadXml(await httpResponse.Content.ReadAsStringAsync());
             XmlNodeList xmlNodeList = doc.GetElementsByTagName("EncryptedData");
@@ -123,10 +129,12 @@ namespace StoreLib.Services
             foreach (string ID in UpdateIDs)
             {
                 HttpContent httpContent = new StringContent(String.Format(GetResourceTextFile("FE3FileUrl.xml"), ID, RevisionIDs[UpdateIDs.IndexOf(ID)], MSAToken ?? _msaToken), Encoding.UTF8, "application/soap+xml");//Loading the request xml from a file to keep things nice and tidy.
-                HttpRequestMessage httpRequest = new HttpRequestMessage();
-                httpRequest.RequestUri = Endpoints.FE3DeliverySecured;
-                httpRequest.Content = httpContent;
-                httpRequest.Method = HttpMethod.Post;
+                HttpRequestMessage httpRequest = new HttpRequestMessage
+                {
+                    RequestUri = Endpoints.FE3DeliverySecured,
+                    Content = httpContent,
+                    Method = HttpMethod.Post
+                };
                 HttpResponseMessage httpResponse = await _httpClient.SendAsync(httpRequest, new System.Threading.CancellationToken()); 
                 doc.LoadXml(await httpResponse.Content.ReadAsStringAsync());
                 XmlNodeList XmlUrls = doc.GetElementsByTagName("FileLocation");
@@ -159,10 +167,8 @@ namespace StoreLib.Services
             using (Stream stream = Assembly.GetExecutingAssembly().
                        GetManifestResourceStream("StoreLib.Xml." + filename))
             {
-                using (StreamReader sr = new StreamReader(stream))
-                {
-                    result = sr.ReadToEnd();
-                }
+                using StreamReader sr = new StreamReader(stream);
+                result = sr.ReadToEnd();
             }
             return result;
         }
