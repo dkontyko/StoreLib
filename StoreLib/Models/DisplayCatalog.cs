@@ -781,10 +781,10 @@ namespace StoreLib.Models
         public bool IsPiRequired { get; set; }
 
         [JsonPropertyName(nameof(ListPrice))]
-        public long ListPrice { get; set; }
+        public double ListPrice { get; set; }
 
         [JsonPropertyName("MSRP")]
-        public long Msrp { get; set; }
+        public double Msrp { get; set; }
 
         [JsonPropertyName(nameof(TaxType))]
         public string TaxType { get; set; }
