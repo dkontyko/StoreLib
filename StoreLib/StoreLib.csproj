@@ -20,13 +20,15 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <WarningLevel>9999</WarningLevel>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <NoWarn />
+    <NoWarn></NoWarn>
+    <WarningsNotAsErrors>CS0162;CS1998</WarningsNotAsErrors>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <WarningLevel>9999</WarningLevel>
     <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
-    <NoWarn />
+    <NoWarn></NoWarn>
+    <WarningsNotAsErrors>CS0162;CS1998</WarningsNotAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
