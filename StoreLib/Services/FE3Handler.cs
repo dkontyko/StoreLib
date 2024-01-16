@@ -7,10 +7,10 @@ using System.IO;
 using System.Net.Http;
 using System.Reflection;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Web;
 using System.Xml;
-using Newtonsoft.Json;
 
 
 namespace StoreLib.Services
@@ -65,7 +65,7 @@ namespace StoreLib.Services
             {
                 if(node.Attributes.Count >= 3)
                 {
-                    PackageInstance package = new PackageInstance(node.Attributes.GetNamedItem("PackageMoniker").Value, new Uri("http://test.com"), Utilities.TypeHelpers.StringToPackageType(node.Attributes.GetNamedItem("PackageType").Value), JsonConvert.DeserializeObject<ApplicabilityBlob>(node.FirstChild.InnerText), "");
+                    PackageInstance package = new PackageInstance(node.Attributes.GetNamedItem("PackageMoniker").Value, new Uri("http://test.com"), Utilities.TypeHelpers.StringToPackageType(node.Attributes.GetNamedItem("PackageType").Value), JsonSerializer.Deserialize<ApplicabilityBlob>(node.FirstChild.InnerText), "");
                     PackageInstances.Add(package);
                 }
             }
