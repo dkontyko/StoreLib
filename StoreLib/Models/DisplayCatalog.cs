@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
+using System.Text.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,540 +9,545 @@ namespace StoreLib.Models
 {
     public partial class DisplayCatalogModel
     {
-        [JsonProperty("Product")]
+        [JsonPropertyName(nameof(Product))]
         public Product Product { get; set; }
-        [JsonProperty("BigIds")]
+        [JsonPropertyName(nameof(BigIds))]
         public List<string> BigIds { get; set; }
-        [JsonProperty("HasMorePages")]
+        [JsonPropertyName(nameof(HasMorePages))]
         public bool HasMorePages { get; set; }
-        [JsonProperty("Products")]
+        [JsonPropertyName(nameof(Products))]
         public List<Product> Products { get; set; }
-        [JsonProperty("TotalResultCount")]
+        [JsonPropertyName(nameof(TotalResultCount))]
         public int TotalResultCount { get; set; }
     }
 
     public partial class Product
     {
-        [JsonProperty("LastModifiedDate")]
+        [JsonPropertyName(nameof(LastModifiedDate))]
         public string LastModifiedDate { get; set; }
 
-        [JsonProperty("LocalizedProperties")]
+        [JsonPropertyName(nameof(LocalizedProperties))]
         public List<ProductLocalizedProperty> LocalizedProperties { get; set; }
 
-        [JsonProperty("MarketProperties")]
+        [JsonPropertyName(nameof(MarketProperties))]
         public List<ProductMarketProperty> MarketProperties { get; set; }
 
-        [JsonProperty("ProductASchema")]
+        [JsonPropertyName(nameof(ProductASchema))]
         public string ProductASchema { get; set; }
 
-        [JsonProperty("ProductBSchema")]
+        [JsonPropertyName(nameof(ProductBSchema))]
         public string ProductBSchema { get; set; }
 
-        [JsonProperty("Properties")]
+        [JsonPropertyName(nameof(Properties))]
         public ProductProperties Properties { get; set; }
 
-        [JsonProperty("AlternateIds")]
+        [JsonPropertyName(nameof(AlternateIds))]
         public List<AlternateId> AlternateIds { get; set; }
 
-        [JsonProperty("DomainDataVersion")]
+        [JsonPropertyName(nameof(DomainDataVersion))]
         public object DomainDataVersion { get; set; }
 
-        [JsonProperty("IngestionSource")]
+        [JsonPropertyName(nameof(IngestionSource))]
         public string IngestionSource { get; set; }
 
-        [JsonProperty("IsMicrosoftProduct")]
+        [JsonPropertyName(nameof(IsMicrosoftProduct))]
         public bool IsMicrosoftProduct { get; set; }
 
-        [JsonProperty("PreferredSkuId")]
+        [JsonPropertyName(nameof(PreferredSkuId))]
         public string PreferredSkuId { get; set; }
 
-        [JsonProperty("ProductType")]
+        [JsonPropertyName(nameof(ProductType))]
         public string ProductType { get; set; }
 
-        [JsonProperty("ValidationData")]
+        [JsonPropertyName(nameof(ValidationData))]
         public ValidationData ValidationData { get; set; }
 
-        [JsonProperty("SandboxId")]
+        [JsonPropertyName("SandboxId")]
         public string SandboxID { get; set; }
 
-        [JsonProperty("IsSandboxedProduct")]
+        [JsonPropertyName(nameof(IsSandboxedProduct))]
         public bool IsSandboxedProduct { get; set; }
 
-        [JsonProperty("MerchandizingTags")]
+        [JsonPropertyName(nameof(MerchandizingTags))]
         public List<object> MerchandizingTags { get; set; }
 
-        [JsonProperty("PartD")]
+        [JsonPropertyName(nameof(PartD))]
         public string PartD { get; set; }
 
-        [JsonProperty("ProductFamily")]
+        [JsonPropertyName(nameof(ProductFamily))]
         public string ProductFamily { get; set; }
 
-        [JsonProperty("SchemaVersion")]
+        [JsonPropertyName(nameof(SchemaVersion))]
         public string SchemaVersion { get; set; }
 
-        [JsonProperty("ProductKind")]
+        [JsonPropertyName(nameof(ProductKind))]
         public string ProductKind { get; set; }
 
-        [JsonProperty("DisplaySkuAvailabilities")]
+        [JsonPropertyName(nameof(DisplaySkuAvailabilities))]
         public List<DisplaySkuAvailability> DisplaySkuAvailabilities { get; set; }
     }
 
     public partial class ValidationData
     {
-        [JsonProperty("PassedValidation")]
+        [JsonPropertyName(nameof(PassedValidation))]
         public bool PassedValidation { get; set; }
 
-        [JsonProperty("RevisionId")]
+        [JsonPropertyName(nameof(RevisionId))]
         public string RevisionId { get; set; }
 
-        [JsonProperty("ValidationResultUri")]
+        [JsonPropertyName(nameof(ValidationResultUri))]
         public string ValidationResultUri { get; set; }
     }
 
     public partial class ProductProperties
     {
-        [JsonProperty("Attributes")]
+        [JsonPropertyName(nameof(Attributes))]
         public List<object> Attributes { get; set; }
 
-        [JsonProperty("CanInstallToSDCard")]
+        [JsonPropertyName("CanInstallToSDCard")]
         public bool CanInstallToSdCard { get; set; }
 
-        [JsonProperty("Category")]
+        [JsonPropertyName(nameof(Category))]
         public string Category { get; set; }
 
-        [JsonProperty("SubCategory")]
+        [JsonPropertyName(nameof(SubCategory))]
         public string SubCategory { get; set; }
 
-        [JsonProperty("Categories")]
+        [JsonPropertyName(nameof(Categories))]
         public object Categories { get; set; }
 
-        [JsonProperty("Extensions")]
+        [JsonPropertyName(nameof(Extensions))]
         public object Extensions { get; set; }
 
-        [JsonProperty("IsAccessible")]
+        [JsonPropertyName(nameof(IsAccessible))]
         public bool IsAccessible { get; set; }
 
-        [JsonProperty("IsLineOfBusinessApp")]
+        [JsonPropertyName(nameof(IsLineOfBusinessApp))]
         public bool IsLineOfBusinessApp { get; set; }
 
-        [JsonProperty("IsPublishedToLegacyWindowsPhoneStore")]
+        [JsonPropertyName(nameof(IsPublishedToLegacyWindowsPhoneStore))]
         public bool IsPublishedToLegacyWindowsPhoneStore { get; set; }
 
-        [JsonProperty("IsPublishedToLegacyWindowsStore")]
+        [JsonPropertyName(nameof(IsPublishedToLegacyWindowsStore))]
         public bool IsPublishedToLegacyWindowsStore { get; set; }
 
-        [JsonProperty("IsSettingsApp")]
+        [JsonPropertyName(nameof(IsSettingsApp))]
         public bool IsSettingsApp { get; set; }
 
-        [JsonProperty("PackageFamilyName")]
+        [JsonPropertyName(nameof(PackageFamilyName))]
         public string PackageFamilyName { get; set; }
 
-        [JsonProperty("PackageIdentityName")]
+        [JsonPropertyName(nameof(PackageIdentityName))]
         public string PackageIdentityName { get; set; }
 
-        [JsonProperty("PublisherCertificateName")]
+        [JsonPropertyName(nameof(PublisherCertificateName))]
         public string PublisherCertificateName { get; set; }
 
-        [JsonProperty("PublisherId")]
+        [JsonPropertyName(nameof(PublisherId))]
         public string PublisherId { get; set; }
 
-        [JsonProperty("XboxLiveTier")]
+        [JsonPropertyName(nameof(XboxLiveTier))]
         public object XboxLiveTier { get; set; }
 
-        [JsonProperty("XboxXPA")]
+        [JsonPropertyName("XboxXPA")]
         public object XboxXpa { get; set; }
 
-        [JsonProperty("OwnershipType")]
+        [JsonPropertyName(nameof(OwnershipType))]
         public object OwnershipType { get; set; }
 
-        [JsonProperty("PdpBackgroundColor")]
+        [JsonPropertyName(nameof(PdpBackgroundColor))]
         public string PdpBackgroundColor { get; set; }
 
-        [JsonProperty("HasAddOns")]
+        [JsonPropertyName(nameof(HasAddOns))]
         public bool? HasAddOns { get; set; }
 
-        [JsonProperty("RevisionId")]
+        [JsonPropertyName(nameof(RevisionId))]
         public string RevisionId { get; set; }
 
-        [JsonProperty("ProductGroupId")]
+        [JsonPropertyName(nameof(ProductGroupId))]
         public string ProductGroupId { get; set; }
 
-        [JsonProperty("ProductGroupName")]
+        [JsonPropertyName(nameof(ProductGroupName))]
         public string ProductGroupName { get; set; }
     }
 
     public partial class ProductMarketProperty
     {
-        [JsonProperty("OriginalReleaseDate")]
+        [JsonPropertyName(nameof(OriginalReleaseDate))]
         public DateTime OriginalReleaseDate { get; set; }
 
-        [JsonProperty("OriginalReleaseDateFriendlyName")]
+        [JsonPropertyName(nameof(OriginalReleaseDateFriendlyName))]
         public string OriginalReleaseDateFriendlyName { get; set; }
 
-        [JsonProperty("MinimumUserAge")]
+        [JsonPropertyName(nameof(MinimumUserAge))]
         public long MinimumUserAge { get; set; }
 
-        [JsonProperty("ContentRatings")]
+        [JsonPropertyName(nameof(ContentRatings))]
         public List<ContentRating> ContentRatings { get; set; }
 
-        [JsonProperty("RelatedProducts")]
+        [JsonPropertyName(nameof(RelatedProducts))]
         public List<object> RelatedProducts { get; set; }
 
-        [JsonProperty("UsageData")]
+        [JsonPropertyName(nameof(UsageData))]
         public List<UsageDatum> UsageData { get; set; }
 
-        [JsonProperty("BundleConfig")]
+        [JsonPropertyName(nameof(BundleConfig))]
         public object BundleConfig { get; set; }
 
-        [JsonProperty("Markets")]
+        [JsonPropertyName(nameof(Markets))]
         public List<string> Markets { get; set; }
     }
 
     public partial class UsageDatum
     {
-        [JsonProperty("AverageRating")]
+        [JsonPropertyName(nameof(AverageRating))]
         public double AverageRating { get; set; }
 
-        [JsonProperty("AggregateTimeSpan")]
+        [JsonPropertyName(nameof(AggregateTimeSpan))]
         public string AggregateTimeSpan { get; set; }
 
-        [JsonProperty("RatingCount")]
+        [JsonPropertyName(nameof(RatingCount))]
         public long RatingCount { get; set; }
 
-        [JsonProperty("PurchaseCount")]
+        [JsonConverter(typeof(StringToLongConverter))]
+        [JsonPropertyName(nameof(PurchaseCount))]
         public long PurchaseCount { get; set; }
 
-        [JsonProperty("TrialCount")]
+        [JsonConverter(typeof(StringToLongConverter))]
+        [JsonPropertyName(nameof(TrialCount))]
         public long? TrialCount { get; set; }
 
-        [JsonProperty("RentalCount")]
+        [JsonConverter(typeof(StringToLongConverter))]
+        [JsonPropertyName(nameof(RentalCount))]
         public long RentalCount { get; set; }
 
-        [JsonProperty("PlayCount")]
+        [JsonPropertyName(nameof(PlayCount))]
         public long PlayCount { get; set; }
     }
 
     public partial class ContentRating
     {
-        [JsonProperty("RatingSystem")]
+        [JsonPropertyName(nameof(RatingSystem))]
         public string RatingSystem { get; set; }
 
-        [JsonProperty("RatingId")]
+        [JsonPropertyName(nameof(RatingId))]
         public string RatingId { get; set; }
 
-        [JsonProperty("RatingDescriptors")]
+        [JsonPropertyName(nameof(RatingDescriptors))]
         public List<string> RatingDescriptors { get; set; }
 
-        [JsonProperty("RatingDisclaimers")]
+        [JsonPropertyName(nameof(RatingDisclaimers))]
         public List<object> RatingDisclaimers { get; set; }
 
-        [JsonProperty("InteractiveElements")]
+        [JsonPropertyName(nameof(InteractiveElements))]
         public List<string> InteractiveElements { get; set; }
     }
 
     public partial class ProductLocalizedProperty
     {
-        [JsonProperty("DeveloperName")]
+        [JsonPropertyName(nameof(DeveloperName))]
         public string DeveloperName { get; set; }
 
-        [JsonProperty("DisplayPlatformProperties")]
+        [JsonPropertyName(nameof(DisplayPlatformProperties))]
         public object DisplayPlatformProperties { get; set; }
 
-        [JsonProperty("PublisherName")]
+        [JsonPropertyName(nameof(PublisherName))]
         public string PublisherName { get; set; }
 
-        [JsonProperty("PublisherWebsiteUri")]
+        [JsonPropertyName(nameof(PublisherWebsiteUri))]
         public string PublisherWebsiteUri { get; set; }
 
-        [JsonProperty("SupportUri")]
+        [JsonPropertyName(nameof(SupportUri))]
         public string SupportUri { get; set; }
 
-        [JsonProperty("EligibilityProperties")]
+        [JsonPropertyName(nameof(EligibilityProperties))]
         public object EligibilityProperties { get; set; }
 
-        [JsonProperty("Franchises")]
+        [JsonPropertyName(nameof(Franchises))]
         public List<object> Franchises { get; set; }
 
-        [JsonProperty("Images")]
+        [JsonPropertyName(nameof(Images))]
         public List<Image> Images { get; set; }
 
-        [JsonProperty("Videos")]
+        [JsonPropertyName(nameof(Videos))]
         public List<object> Videos { get; set; }
 
-        [JsonProperty("ProductDescription")]
+        [JsonPropertyName(nameof(ProductDescription))]
         public string ProductDescription { get; set; }
 
-        [JsonProperty("ProductTitle")]
+        [JsonPropertyName(nameof(ProductTitle))]
         public string ProductTitle { get; set; }
 
-        [JsonProperty("ShortTitle")]
+        [JsonPropertyName(nameof(ShortTitle))]
         public string ShortTitle { get; set; }
 
-        [JsonProperty("SortTitle")]
+        [JsonPropertyName(nameof(SortTitle))]
         public string SortTitle { get; set; }
 
-        [JsonProperty("ShortDescription")]
+        [JsonPropertyName(nameof(ShortDescription))]
         public string ShortDescription { get; set; }
 
-        [JsonProperty("SearchTitles")]
+        [JsonPropertyName(nameof(SearchTitles))]
         public List<SearchTitle> SearchTitles { get; set; }
 
-        [JsonProperty("VoiceTitle")]
+        [JsonPropertyName(nameof(VoiceTitle))]
         public string VoiceTitle { get; set; }
 
-        [JsonProperty("RenderGroupDetails")]
+        [JsonPropertyName(nameof(RenderGroupDetails))]
         public object RenderGroupDetails { get; set; }
 
-        [JsonProperty("ProductDisplayRanks")]
+        [JsonPropertyName(nameof(ProductDisplayRanks))]
         public List<object> ProductDisplayRanks { get; set; }
 
-        [JsonProperty("Language")]
+        [JsonPropertyName(nameof(Language))]
         public string Language { get; set; }
 
-        [JsonProperty("Markets")]
+        [JsonPropertyName(nameof(Markets))]
         public List<string> Markets { get; set; }
     }
 
     public partial class SearchTitle
     {
-        [JsonProperty("SearchTitleString")]
+        [JsonPropertyName(nameof(SearchTitleString))]
         public string SearchTitleString { get; set; }
 
-        [JsonProperty("SearchTitleType")]
+        [JsonPropertyName(nameof(SearchTitleType))]
         public string SearchTitleType { get; set; }
     }
 
     public partial class Image
     {
-        [JsonProperty("BackgroundColor")]
+        [JsonPropertyName(nameof(BackgroundColor))]
         public string BackgroundColor { get; set; }
 
-        [JsonProperty("Caption")]
+        [JsonPropertyName(nameof(Caption))]
         public string Caption { get; set; }
 
-        [JsonProperty("FileSizeInBytes")]
+        [JsonPropertyName(nameof(FileSizeInBytes))]
         public long FileSizeInBytes { get; set; }
 
-        [JsonProperty("ForegroundColor")]
+        [JsonPropertyName(nameof(ForegroundColor))]
         public string ForegroundColor { get; set; }
 
-        [JsonProperty("Height")]
+        [JsonPropertyName(nameof(Height))]
         public long Height { get; set; }
 
-        [JsonProperty("ImagePositionInfo")]
+        [JsonPropertyName(nameof(ImagePositionInfo))]
         public string ImagePositionInfo { get; set; }
 
-        [JsonProperty("ImagePurpose")]
+        [JsonPropertyName(nameof(ImagePurpose))]
         public string ImagePurpose { get; set; }
 
-        [JsonProperty("UnscaledImageSHA256Hash")]
+        [JsonPropertyName("UnscaledImageSHA256Hash")]
         public string UnscaledImageSha256Hash { get; set; }
 
-        [JsonProperty("Uri")]
+        [JsonPropertyName(nameof(Uri))]
         public string Uri { get; set; }
 
-        [JsonProperty("Width")]
+        [JsonPropertyName(nameof(Width))]
         public long Width { get; set; }
     }
 
     public partial class DisplaySkuAvailability
     {
-        [JsonProperty("Sku")]
+        [JsonPropertyName(nameof(Sku))]
         public Sku Sku { get; set; }
 
-        [JsonProperty("Availabilities")]
+        [JsonPropertyName(nameof(Availabilities))]
         public List<Availability> Availabilities { get; set; }
     }
 
     public partial class Sku
     {
-        [JsonProperty("LastModifiedDate")]
+        [JsonPropertyName(nameof(LastModifiedDate))]
         public DateTime LastModifiedDate { get; set; }
 
-        [JsonProperty("LocalizedProperties")]
+        [JsonPropertyName(nameof(LocalizedProperties))]
         public List<SkuLocalizedProperty> LocalizedProperties { get; set; }
 
-        [JsonProperty("MarketProperties")]
+        [JsonPropertyName(nameof(MarketProperties))]
         public List<SkuMarketProperty> MarketProperties { get; set; }
 
-        [JsonProperty("Properties")]
+        [JsonPropertyName(nameof(Properties))]
         public SkuProperties Properties { get; set; }
 
-        [JsonProperty("SkuASchema")]
+        [JsonPropertyName(nameof(SkuASchema))]
         public string SkuASchema { get; set; }
 
-        [JsonProperty("SkuBSchema")]
+        [JsonPropertyName(nameof(SkuBSchema))]
         public string SkuBSchema { get; set; }
 
-        [JsonProperty("SkuId")]
+        [JsonPropertyName(nameof(SkuId))]
         public string SkuId { get; set; }
 
-        [JsonProperty("SkuType")]
+        [JsonPropertyName(nameof(SkuType))]
         public string SkuType { get; set; }
 
-        [JsonProperty("RecurrencePolicy")]
+        [JsonPropertyName(nameof(RecurrencePolicy))]
         public object RecurrencePolicy { get; set; }
 
-        [JsonProperty("SubscriptionPolicyId")]
+        [JsonPropertyName(nameof(SubscriptionPolicyId))]
         public object SubscriptionPolicyId { get; set; }
     }
 
     public partial class SkuProperties
     {
-        [JsonProperty("EarlyAdopterEnrollmentUrl")]
+        [JsonPropertyName(nameof(EarlyAdopterEnrollmentUrl))]
         public object EarlyAdopterEnrollmentUrl { get; set; }
 
-        [JsonProperty("FulfillmentData")]
+        [JsonPropertyName(nameof(FulfillmentData))]
         public FulfillmentData FulfillmentData { get; set; }
 
-        [JsonProperty("FulfillmentType")]
+        [JsonPropertyName(nameof(FulfillmentType))]
         public string FulfillmentType { get; set; }
 
-        [JsonProperty("HasThirdPartyIAPs")]
+        [JsonPropertyName("HasThirdPartyIAPs")]
         public bool HasThirdPartyIaPs { get; set; }
 
-        [JsonProperty("LastUpdateDate")]
+        [JsonPropertyName(nameof(LastUpdateDate))]
         public string LastUpdateDate { get; set; }
 
-        [JsonProperty("HardwareProperties")]
+        [JsonPropertyName(nameof(HardwareProperties))]
         public HardwareProperties HardwareProperties { get; set; }
 
-        [JsonProperty("HardwareRequirements")]
+        [JsonPropertyName(nameof(HardwareRequirements))]
         public List<object> HardwareRequirements { get; set; }
 
-        [JsonProperty("HardwareWarningList")]
+        [JsonPropertyName(nameof(HardwareWarningList))]
         public List<object> HardwareWarningList { get; set; }
 
-        [JsonProperty("InstallationTerms")]
+        [JsonPropertyName(nameof(InstallationTerms))]
         public string InstallationTerms { get; set; }
 
-        [JsonProperty("Packages")]
+        [JsonPropertyName(nameof(Packages))]
         public List<Package> Packages { get; set; }
 
-        [JsonProperty("VersionString")]
+        [JsonPropertyName(nameof(VersionString))]
         public string VersionString { get; set; }
 
-        [JsonProperty("VisibleToB2BServiceIds")]
+        [JsonPropertyName(nameof(VisibleToB2BServiceIds))]
         public List<object> VisibleToB2BServiceIds { get; set; }
 
-        [JsonProperty("XboxXPA")]
+        [JsonPropertyName("XboxXPA")]
         public bool XboxXpa { get; set; }
 
-        [JsonProperty("BundledSkus")]
+        [JsonPropertyName(nameof(BundledSkus))]
         public List<object> BundledSkus { get; set; }
 
-        [JsonProperty("IsRepurchasable")]
+        [JsonPropertyName(nameof(IsRepurchasable))]
         public bool? IsRepurchasable { get; set; }
 
-        [JsonProperty("SkuDisplayRank")]
+        [JsonPropertyName(nameof(SkuDisplayRank))]
         public long SkuDisplayRank { get; set; }
 
-        [JsonProperty("DisplayPhysicalStoreInventory")]
+        [JsonPropertyName(nameof(DisplayPhysicalStoreInventory))]
         public object DisplayPhysicalStoreInventory { get; set; }
 
-        [JsonProperty("AdditionalIdentifiers")]
+        [JsonPropertyName(nameof(AdditionalIdentifiers))]
         public List<object> AdditionalIdentifiers { get; set; }
 
-        [JsonProperty("IsTrial")]
+        [JsonPropertyName(nameof(IsTrial))]
         public bool IsTrial { get; set; }
 
-        [JsonProperty("IsPreOrder")]
+        [JsonPropertyName(nameof(IsPreOrder))]
         public bool IsPreOrder { get; set; }
 
-        [JsonProperty("IsBundle")]
+        [JsonPropertyName(nameof(IsBundle))]
         public bool IsBundle { get; set; }
     }
 
     public partial class Package
     {
-        [JsonProperty("Applications")]
+        [JsonPropertyName(nameof(Applications))]
         public List<Application> Applications { get; set; }
 
-        [JsonProperty("Architectures")]
+        [JsonPropertyName(nameof(Architectures))]
         public List<string> Architectures { get; set; }
 
-        [JsonProperty("Capabilities")]
+        [JsonPropertyName(nameof(Capabilities))]
         public List<string> Capabilities { get; set; }
 
-        [JsonProperty("DeviceCapabilities")]
+        [JsonPropertyName(nameof(DeviceCapabilities))]
         public List<object> DeviceCapabilities { get; set; }
 
-        [JsonProperty("ExperienceIds")]
+        [JsonPropertyName(nameof(ExperienceIds))]
         public List<object> ExperienceIds { get; set; }
 
-        [JsonProperty("FrameworkDependencies")]
+        [JsonPropertyName(nameof(FrameworkDependencies))]
         public List<object> FrameworkDependencies { get; set; }
 
-        [JsonProperty("HardwareDependencies")]
+        [JsonPropertyName(nameof(HardwareDependencies))]
         public List<object> HardwareDependencies { get; set; }
 
-        [JsonProperty("HardwareRequirements")]
+        [JsonPropertyName(nameof(HardwareRequirements))]
         public List<object> HardwareRequirements { get; set; }
 
-        [JsonProperty("Hash")]
+        [JsonPropertyName(nameof(Hash))]
         public string Hash { get; set; }
 
-        [JsonProperty("HashAlgorithm")]
+        [JsonPropertyName(nameof(HashAlgorithm))]
         public string HashAlgorithm { get; set; }
 
-        [JsonProperty("IsStreamingApp")]
+        [JsonPropertyName(nameof(IsStreamingApp))]
         public bool IsStreamingApp { get; set; }
 
-        [JsonProperty("Languages")]
+        [JsonPropertyName(nameof(Languages))]
         public List<string> Languages { get; set; }
 
-        [JsonProperty("MaxDownloadSizeInBytes")]
+        [JsonPropertyName(nameof(MaxDownloadSizeInBytes))]
         public long MaxDownloadSizeInBytes { get; set; }
 
-        [JsonProperty("MaxInstallSizeInBytes")]
+        // TODO: Revisit whether this type should be numeric.
+        [JsonConverter(typeof(NumberToStringConverter))]
+        [JsonPropertyName(nameof(MaxInstallSizeInBytes))]
         public string MaxInstallSizeInBytes { get; set; }
 
-        [JsonProperty("PackageFormat")]
+        [JsonPropertyName(nameof(PackageFormat))]
         public string PackageFormat { get; set; }
 
-        [JsonProperty("PackageFamilyName")]
+        [JsonPropertyName(nameof(PackageFamilyName))]
         public string PackageFamilyName { get; set; }
 
-        [JsonProperty("MainPackageFamilyNameForDlc")]
+        [JsonPropertyName(nameof(MainPackageFamilyNameForDlc))]
         public object MainPackageFamilyNameForDlc { get; set; }
 
-        [JsonProperty("PackageFullName")]
+        [JsonPropertyName(nameof(PackageFullName))]
         public string PackageFullName { get; set; }
 
-        [JsonProperty("PackageId")]
+        [JsonPropertyName(nameof(PackageId))]
         public string PackageId { get; set; }
 
-        [JsonProperty("ContentId")]
+        [JsonPropertyName(nameof(ContentId))]
         public string ContentId { get; set; }
 
-        [JsonProperty("KeyId")]
+        [JsonPropertyName(nameof(KeyId))]
         public string KeyId { get; set; }
 
-        [JsonProperty("PackageRank")]
+        [JsonPropertyName(nameof(PackageRank))]
         public long PackageRank { get; set; }
 
-        [JsonProperty("PackageUri")]
+        [JsonPropertyName(nameof(PackageUri))]
         public string PackageUri { get; set; }
 
-        [JsonProperty("PlatformDependencies")]
+        [JsonPropertyName(nameof(PlatformDependencies))]
         public List<PlatformDependency> PlatformDependencies { get; set; }
 
-        [JsonProperty("PlatformDependencyXmlBlob")]
+        [JsonPropertyName(nameof(PlatformDependencyXmlBlob))]
         public string PlatformDependencyXmlBlob { get; set; }
 
-        [JsonProperty("ResourceId")]
+        [JsonPropertyName(nameof(ResourceId))]
         public string ResourceId { get; set; }
 
-        [JsonProperty("Version")]
+        [JsonPropertyName(nameof(Version))]
         public string Version { get; set; }
 
-        [JsonProperty("PackageDownloadUris")]
+        [JsonPropertyName(nameof(PackageDownloadUris))]
         public List<PackageDownloadUris> PackageDownloadUris { get; set; }
 
-        [JsonProperty("DriverDependencies")]
+        [JsonPropertyName(nameof(DriverDependencies))]
         public List<object> DriverDependencies { get; set; }
 
-        [JsonProperty("FulfillmentData")]
+        [JsonPropertyName(nameof(FulfillmentData))]
         public FulfillmentData FulfillmentData { get; set; }
 
 
@@ -549,311 +555,356 @@ namespace StoreLib.Models
 
     public partial class PackageDownloadUris
     {
-        [JsonProperty("Uri")]
+        [JsonPropertyName(nameof(Uri))]
         public string Uri { get; set; }
 
-        [JsonProperty("Rank")]
+        [JsonPropertyName(nameof(Rank))]
         public long Rank { get; set; }
     }
 
     public partial class PlatformDependency
     {
-        [JsonProperty("MaxTested")]
+        [JsonPropertyName(nameof(MaxTested))]
         public long MaxTested { get; set; }
 
-        [JsonProperty("MinVersion")]
+        [JsonPropertyName(nameof(MinVersion))]
         public long MinVersion { get; set; }
 
-        [JsonProperty("PlatformName")]
+        [JsonPropertyName(nameof(PlatformName))]
         public string PlatformName { get; set; }
     }
 
     public partial class Application
     {
-        [JsonProperty("ApplicationId")]
+        [JsonPropertyName(nameof(ApplicationId))]
         public string ApplicationId { get; set; }
 
-        [JsonProperty("DeclarationOrder")]
+        [JsonPropertyName(nameof(DeclarationOrder))]
         public long DeclarationOrder { get; set; }
 
-        [JsonProperty("Extensions")]
+        [JsonPropertyName(nameof(Extensions))]
         public List<string> Extensions { get; set; }
     }
 
     public partial class HardwareProperties
     {
-        [JsonProperty("MinimumHardware")]
+        [JsonPropertyName(nameof(MinimumHardware))]
         public List<object> MinimumHardware { get; set; }
 
-        [JsonProperty("RecommendedHardware")]
+        [JsonPropertyName(nameof(RecommendedHardware))]
         public List<string> RecommendedHardware { get; set; }
 
-        [JsonProperty("MinimumProcessor")]
+        [JsonPropertyName(nameof(MinimumProcessor))]
         public string MinimumProcessor { get; set; }
 
-        [JsonProperty("RecommendedProcessor")]
+        [JsonPropertyName(nameof(RecommendedProcessor))]
         public string RecommendedProcessor { get; set; }
 
-        [JsonProperty("MinimumGraphics")]
+        [JsonPropertyName(nameof(MinimumGraphics))]
         public string MinimumGraphics { get; set; }
 
-        [JsonProperty("RecommendedGraphics")]
+        [JsonPropertyName(nameof(RecommendedGraphics))]
         public string RecommendedGraphics { get; set; }
     }
 
     public partial class FulfillmentData
     {
-        [JsonProperty("WuBundleId")]
+        [JsonPropertyName(nameof(WuBundleId))]
         public string WuBundleId { get; set; }
 
-        [JsonProperty("WuCategoryId")]
+        [JsonPropertyName(nameof(WuCategoryId))]
         public string WuCategoryId { get; set; }
 
-        [JsonProperty("PackageFamilyName")]
+        [JsonPropertyName(nameof(PackageFamilyName))]
         public string PackageFamilyName { get; set; }
 
-        [JsonProperty("SkuId")]
+        [JsonPropertyName(nameof(SkuId))]
         public string SkuId { get; set; }
 
-        [JsonProperty("Content")]
+        [JsonPropertyName(nameof(Content))]
         public object Content { get; set; }
     }
 
     public partial class SkuMarketProperty
     {
-        [JsonProperty("FirstAvailableDate")]
+        [JsonPropertyName(nameof(FirstAvailableDate))]
         public string FirstAvailableDate { get; set; }
 
-        [JsonProperty("SupportedLanguages")]
+        [JsonPropertyName(nameof(SupportedLanguages))]
         public List<string> SupportedLanguages { get; set; }
 
-        [JsonProperty("PackageIds")]
+        [JsonPropertyName(nameof(PackageIds))]
         public object PackageIds { get; set; }
 
-        [JsonProperty("Markets")]
+        [JsonPropertyName(nameof(Markets))]
         public List<string> Markets { get; set; }
     }
 
     public partial class SkuLocalizedProperty
     {
-        [JsonProperty("Contributors")]
+        [JsonPropertyName(nameof(Contributors))]
         public List<object> Contributors { get; set; }
 
-        [JsonProperty("Features")]
+        [JsonPropertyName(nameof(Features))]
         public List<object> Features { get; set; }
 
-        [JsonProperty("MinimumNotes")]
+        [JsonPropertyName(nameof(MinimumNotes))]
         public string MinimumNotes { get; set; }
 
-        [JsonProperty("RecommendedNotes")]
+        [JsonPropertyName(nameof(RecommendedNotes))]
         public string RecommendedNotes { get; set; }
 
-        [JsonProperty("ReleaseNotes")]
+        [JsonPropertyName(nameof(ReleaseNotes))]
         public string ReleaseNotes { get; set; }
 
-        [JsonProperty("DisplayPlatformProperties")]
+        [JsonPropertyName(nameof(DisplayPlatformProperties))]
         public object DisplayPlatformProperties { get; set; }
 
-        [JsonProperty("SkuDescription")]
+        [JsonPropertyName(nameof(SkuDescription))]
         public string SkuDescription { get; set; }
 
-        [JsonProperty("SkuTitle")]
+        [JsonPropertyName(nameof(SkuTitle))]
         public string SkuTitle { get; set; }
 
-        [JsonProperty("SkuButtonTitle")]
+        [JsonPropertyName(nameof(SkuButtonTitle))]
         public string SkuButtonTitle { get; set; }
 
-        [JsonProperty("DeliveryDateOverlay")]
+        [JsonPropertyName(nameof(DeliveryDateOverlay))]
         public object DeliveryDateOverlay { get; set; }
 
-        [JsonProperty("SkuDisplayRank")]
+        [JsonPropertyName(nameof(SkuDisplayRank))]
         public List<object> SkuDisplayRank { get; set; }
 
-        [JsonProperty("TextResources")]
+        [JsonPropertyName(nameof(TextResources))]
         public object TextResources { get; set; }
 
-        [JsonProperty("Images")]
+        [JsonPropertyName(nameof(Images))]
         public List<object> Images { get; set; }
 
-        [JsonProperty("LegalText")]
+        [JsonPropertyName(nameof(LegalText))]
         public LegalText LegalText { get; set; }
 
-        [JsonProperty("Language")]
+        [JsonPropertyName(nameof(Language))]
         public string Language { get; set; }
 
-        [JsonProperty("Markets")]
+        [JsonPropertyName(nameof(Markets))]
         public List<string> Markets { get; set; }
     }
 
     public partial class LegalText
     {
-        [JsonProperty("AdditionalLicenseTerms")]
+        [JsonPropertyName(nameof(AdditionalLicenseTerms))]
         public string AdditionalLicenseTerms { get; set; }
 
-        [JsonProperty("Copyright")]
+        [JsonPropertyName(nameof(Copyright))]
         public string Copyright { get; set; }
 
-        [JsonProperty("CopyrightUri")]
+        [JsonPropertyName(nameof(CopyrightUri))]
         public string CopyrightUri { get; set; }
 
-        [JsonProperty("PrivacyPolicy")]
+        [JsonPropertyName(nameof(PrivacyPolicy))]
         public string PrivacyPolicy { get; set; }
 
-        [JsonProperty("PrivacyPolicyUri")]
+        [JsonPropertyName(nameof(PrivacyPolicyUri))]
         public string PrivacyPolicyUri { get; set; }
 
-        [JsonProperty("Tou")]
+        [JsonPropertyName(nameof(Tou))]
         public string Tou { get; set; }
 
-        [JsonProperty("TouUri")]
+        [JsonPropertyName(nameof(TouUri))]
         public string TouUri { get; set; }
     }
 
     public partial class Availability
     {
-        [JsonProperty("Actions")]
+        [JsonPropertyName(nameof(Actions))]
         public List<string> Actions { get; set; }
 
-        [JsonProperty("AvailabilityASchema")]
+        [JsonPropertyName(nameof(AvailabilityASchema))]
         public string AvailabilityASchema { get; set; }
 
-        [JsonProperty("AvailabilityBSchema")]
+        [JsonPropertyName(nameof(AvailabilityBSchema))]
         public string AvailabilityBSchema { get; set; }
 
-        [JsonProperty("AvailabilityId")]
+        [JsonPropertyName(nameof(AvailabilityId))]
         public string AvailabilityId { get; set; }
 
-        [JsonProperty("Conditions")]
+        [JsonPropertyName(nameof(Conditions))]
         public Conditions Conditions { get; set; }
 
-        [JsonProperty("LastModifiedDate")]
+        [JsonPropertyName(nameof(LastModifiedDate))]
         public DateTime LastModifiedDate { get; set; }
 
-        [JsonProperty("Markets")]
+        [JsonPropertyName(nameof(Markets))]
         public List<string> Markets { get; set; }
 
-        [JsonProperty("OrderManagementData")]
+        [JsonPropertyName(nameof(OrderManagementData))]
         public OrderManagementData OrderManagementData { get; set; }
 
-        [JsonProperty("Properties")]
+        [JsonPropertyName(nameof(Properties))]
         public AvailabilityProperties Properties { get; set; }
 
-        [JsonProperty("SkuId")]
+        [JsonPropertyName(nameof(SkuId))]
         public string SkuId { get; set; }
 
-        [JsonProperty("DisplayRank")]
+        [JsonPropertyName(nameof(DisplayRank))]
         public long DisplayRank { get; set; }
 
-        [JsonProperty("RemediationRequired")]
+        [JsonPropertyName(nameof(RemediationRequired))]
         public bool RemediationRequired { get; set; }
     }
 
     public partial class AvailabilityProperties
     {
-        [JsonProperty("OriginalReleaseDate")]
+        [JsonPropertyName(nameof(OriginalReleaseDate))]
         public DateTime? OriginalReleaseDate { get; set; }
     }
 
     public partial class OrderManagementData
     {
-        [JsonProperty("GrantedEntitlementKeys")]
+        [JsonPropertyName(nameof(GrantedEntitlementKeys))]
         public List<object> GrantedEntitlementKeys { get; set; }
 
-        [JsonProperty("PIFilter")]
+        [JsonPropertyName("PIFilter")]
         public PiFilter PiFilter { get; set; }
 
-        [JsonProperty("Price")]
+        [JsonPropertyName(nameof(Price))]
         public Price Price { get; set; }
     }
 
     public partial class Price
     {
-        [JsonProperty("CurrencyCode")]
+        [JsonPropertyName(nameof(CurrencyCode))]
         public string CurrencyCode { get; set; }
 
-        [JsonProperty("IsPIRequired")]
+        [JsonPropertyName("IsPIRequired")]
         public bool IsPiRequired { get; set; }
 
-        [JsonProperty("ListPrice")]
-        public long ListPrice { get; set; }
+        [JsonPropertyName(nameof(ListPrice))]
+        public double ListPrice { get; set; }
 
-        [JsonProperty("MSRP")]
-        public long Msrp { get; set; }
+        [JsonPropertyName("MSRP")]
+        public double Msrp { get; set; }
 
-        [JsonProperty("TaxType")]
+        [JsonPropertyName(nameof(TaxType))]
         public string TaxType { get; set; }
 
-        [JsonProperty("WholesaleCurrencyCode")]
+        [JsonPropertyName(nameof(WholesaleCurrencyCode))]
         public string WholesaleCurrencyCode { get; set; }
     }
 
     public partial class PiFilter
     {
-        [JsonProperty("ExclusionProperties")]
+        [JsonPropertyName(nameof(ExclusionProperties))]
         public List<object> ExclusionProperties { get; set; }
 
-        [JsonProperty("InclusionProperties")]
+        [JsonPropertyName(nameof(InclusionProperties))]
         public List<object> InclusionProperties { get; set; }
     }
 
     public partial class Conditions
     {
-        [JsonProperty("ClientConditions")]
+        [JsonPropertyName(nameof(ClientConditions))]
         public ClientConditions ClientConditions { get; set; }
 
-        [JsonProperty("EndDate")]
+        [JsonPropertyName(nameof(EndDate))]
         public DateTime EndDate { get; set; }
 
-        [JsonProperty("ResourceSetIds")]
+        [JsonPropertyName(nameof(ResourceSetIds))]
         public List<string> ResourceSetIds { get; set; }
 
-        [JsonProperty("StartDate")]
+        [JsonPropertyName(nameof(StartDate))]
         public DateTime StartDate { get; set; }
     }
 
     public partial class ClientConditions
     {
-        [JsonProperty("AllowedPlatforms")]
+        [JsonPropertyName(nameof(AllowedPlatforms))]
         public List<AllowedPlatform> AllowedPlatforms { get; set; }
     }
 
     public partial class AllowedPlatform
     {
-        [JsonProperty("MaxVersion")]
+        [JsonPropertyName(nameof(MaxVersion))]
         public long MaxVersion { get; set; }
 
-        [JsonProperty("MinVersion")]
+        [JsonPropertyName(nameof(MinVersion))]
         public long MinVersion { get; set; }
 
-        [JsonProperty("PlatformName")]
+        [JsonPropertyName(nameof(PlatformName))]
         public string PlatformName { get; set; }
     }
 
     public partial class AlternateId
     {
-        [JsonProperty("IdType")]
+        [JsonPropertyName(nameof(IdType))]
         public string IdType { get; set; }
 
-        [JsonProperty("Value")]
+        [JsonPropertyName(nameof(Value))]
         public string Value { get; set; }
     }
 
     public partial class DisplayCatalogModel
     {
-        public static DisplayCatalogModel FromJson(string json) => JsonConvert.DeserializeObject<DisplayCatalogModel>(json, Converter.Settings);
+        public static DisplayCatalogModel FromJson(string json) => JsonSerializer.Deserialize<DisplayCatalogModel>(json);
     }
 
     public static class Serialize
     {
-        public static string ToJson(this DisplayCatalogModel self) => JsonConvert.SerializeObject(self, Converter.Settings);
-    }
+        public static string ToJson(this DisplayCatalogModel self) => JsonSerializer.Serialize(self, jsonSerializerOptions);
 
-    public class Converter
-    {
-        public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
+        private static readonly JsonSerializerOptions jsonSerializerOptions = new JsonSerializerOptions
         {
-            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-            DateParseHandling = DateParseHandling.None,
+            WriteIndented = true
         };
     }
+
+    internal class StringToLongConverter : JsonConverter<long>
+    {
+        public override long Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            if (reader.TokenType == JsonTokenType.String)
+            {
+                string stringValue = reader.GetString();
+                if (long.TryParse(stringValue, out long value))
+                {
+                    return value;
+                }
+            }
+            throw new JsonException("Unable to convert JSON string to long.");
+        }
+
+        public override void Write(Utf8JsonWriter writer, long value, JsonSerializerOptions options)
+        {
+            writer.WriteStringValue(value.ToString());
+        }
+    }
+
+    internal class NumberToStringConverter : JsonConverter<string>
+    {
+        public override string Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            switch(reader.TokenType)
+            {
+                case JsonTokenType.Number:
+                    if (reader.TryGetInt64(out long longValue))
+                    {
+                        return longValue.ToString();
+                    }
+                    break;
+                case JsonTokenType.String:
+                    return reader.GetString();
+            }
+
+            // Will only be reached if the conversion failed
+            throw new JsonException("Expected a number or a string.");
+        }
+
+        public override void Write(Utf8JsonWriter writer, string value, JsonSerializerOptions options)
+        {
+            writer.WriteStringValue(value);
+        }
+    }
+
+
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 namespace StoreLib.Models
 {
@@ -25,79 +26,79 @@ namespace StoreLib.Models
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse); 
     public class ContentTargetPlatform
     {
-        [JsonProperty("platform.maxVersionTested")]
+        [JsonPropertyName("platform.maxVersionTested")]
         public long PlatformMaxVersionTested { get; set; }
 
-        [JsonProperty("platform.minVersion")]
+        [JsonPropertyName("platform.minVersion")]
         public long PlatformMinVersion { get; set; }
 
-        [JsonProperty("platform.target")]
+        [JsonPropertyName("platform.target")]
         public int PlatformTarget { get; set; }
     }
 
     public class Policy
     {
-        [JsonProperty("category.first")]
+        [JsonPropertyName("category.first")]
         public string CategoryFirst { get; set; }
 
-        [JsonProperty("category.second")]
+        [JsonPropertyName("category.second")]
         public string CategorySecond { get; set; }
 
-        [JsonProperty("category.third")]
+        [JsonPropertyName("category.third")]
         public string CategoryThird { get; set; }
 
-        [JsonProperty("optOut.backupRestore")]
+        [JsonPropertyName("optOut.backupRestore")]
         public bool OptOutBackupRestore { get; set; }
 
-        [JsonProperty("optOut.removeableMedia")]
+        [JsonPropertyName("optOut.removeableMedia")]
         public bool OptOutRemoveableMedia { get; set; }
     }
 
     public class ThirdPartyAppRating
     {
-        [JsonProperty("level")]
+        [JsonPropertyName("level")]
         public int Level { get; set; }
 
-        [JsonProperty("systemId")]
+        [JsonPropertyName("systemId")]
         public int SystemId { get; set; }
     }
 
     public class Policy2
     {
-        [JsonProperty("ageRating")]
+        [JsonPropertyName("ageRating")]
         public int AgeRating { get; set; }
 
-        [JsonProperty("optOut.DVR")]
+        [JsonPropertyName("optOut.DVR")]
         public bool OptOutDVR { get; set; }
 
-        [JsonProperty("thirdPartyAppRatings")]
+        [JsonPropertyName("thirdPartyAppRatings")]
         public List<ThirdPartyAppRating> ThirdPartyAppRatings { get; set; }
     }
 
     public class ApplicabilityBlob
     {
-        [JsonProperty("blob.version")]
+        [JsonPropertyName("blob.version")]
         public long BlobVersion { get; set; }
 
-        [JsonProperty("content.isMain")]
+        [JsonPropertyName("content.isMain")]
         public bool ContentIsMain { get; set; }
 
-        [JsonProperty("content.packageId")]
+        [JsonPropertyName("content.packageId")]
         public string ContentPackageId { get; set; }
 
-        [JsonProperty("content.productId")]
+        [JsonPropertyName("content.productId")]
         public string ContentProductId { get; set; }
 
-        [JsonProperty("content.targetPlatforms")]
+        [JsonPropertyName("content.targetPlatforms")]
         public List<ContentTargetPlatform> ContentTargetPlatforms { get; set; }
 
-        [JsonProperty("content.type")]
+        [JsonPropertyName("content.type")]
         public int ContentType { get; set; }
 
-        [JsonProperty("policy")]
+        [JsonPropertyName("policy")]
         public Policy Policy { get; set; }
 
-        [JsonProperty("policy2")]
+        [JsonPropertyName("policy2")]
         public Policy2 Policy2 { get; set; }
     }
 }

@@ -63,7 +63,7 @@ namespace StoreLib.Utilities
             isInitialized = true;
         }
 
-        protected static int getCllSettingsAsInt(Settings setting)
+        protected static int GetCllSettingsAsInt(Settings setting)
         {
             return (int)setting;
         }
@@ -72,7 +72,7 @@ namespace StoreLib.Utilities
         {
             int vectorSize = (int)Math.Floor(Math.Log10(currentVector) + 1);
 
-            if (baseVector.Length + 1 + vectorSize + 1 + 1 > getCllSettingsAsInt(Settings.MAXCORRELATIONVECTORLENGTH))
+            if (baseVector.Length + 1 + vectorSize + 1 + 1 > GetCllSettingsAsInt(Settings.MAXCORRELATIONVECTORLENGTH))
             {
                 return false;
             }
@@ -92,7 +92,7 @@ namespace StoreLib.Utilities
             int vectorSize = (int)Math.Floor(Math.Log10(newVector) + 1);
 
             // Get the length of the existing string + length of the new extension + the length of the dot
-            if (baseVector.Length + vectorSize + 1 > getCllSettingsAsInt(Settings.MAXCORRELATIONVECTORLENGTH))
+            if (baseVector.Length + vectorSize + 1 > GetCllSettingsAsInt(Settings.MAXCORRELATIONVECTORLENGTH))
             {
                 return false;
             }
@@ -157,7 +157,7 @@ namespace StoreLib.Utilities
          */
         bool IsValid(string vector)
         {
-            if (vector.Length > getCllSettingsAsInt(Settings.MAXCORRELATIONVECTORLENGTH))
+            if (vector.Length > GetCllSettingsAsInt(Settings.MAXCORRELATIONVECTORLENGTH))
             {
                 return false;
             }
@@ -195,8 +195,8 @@ namespace StoreLib.Utilities
             if (IsValid(vector))
             {
                 int lastDot = vector.LastIndexOf(".");
-                baseVector = vector.Substring(0, lastDot);
-                currentVector = Int32.Parse(vector.Substring(lastDot + 1));
+                baseVector = vector[..lastDot];
+                currentVector = Int32.Parse(vector[(lastDot + 1)..]);
                 isInitialized = true;
             }
             else

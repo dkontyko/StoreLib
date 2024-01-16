@@ -46,10 +46,7 @@ namespace StoreLib.Services
         public async Task<IList<PackageInstance>> GetPackagesForProductAsync(string MSAToken = null)
         {
             string xml = await FE3Handler.SyncUpdatesAsync(ProductListing.Product.DisplaySkuAvailabilities[0].Sku.Properties.FulfillmentData.WuCategoryId, MSAToken);
-            IList<string> RevisionIDs;
-            IList<string> PackageNames;
-            IList<string> UpdateIDs;
-            FE3Handler.ProcessUpdateIDs(xml, out RevisionIDs, out PackageNames, out UpdateIDs);
+            FE3Handler.ProcessUpdateIDs(xml, out IList<string> RevisionIDs, out IList<string> PackageNames, out IList<string> UpdateIDs);
             IList<PackageInstance> PackageInstances = await FE3Handler.GetPackageInstancesAsync(xml);
             IList<Uri> Files = await FE3Handler.GetFileUrlsAsync(UpdateIDs, RevisionIDs, MSAToken);
             foreach(PackageInstance package in PackageInstances)
@@ -105,7 +102,7 @@ namespace StoreLib.Services
             }
             else
             {
-                throw new Exception($"Failed to query DisplayCatalog Endpoint: {SelectedEndpoint.ToString()} Status Code: {httpResponse.StatusCode} Returned Data: {await httpResponse.Content.ReadAsStringAsync()}");
+                throw new Exception($"Failed to query DisplayCatalog Endpoint: {SelectedEndpoint} Status Code: {httpResponse.StatusCode} Returned Data: {await httpResponse.Content.ReadAsStringAsync()}");
             }
         }
 
@@ -167,7 +164,7 @@ namespace StoreLib.Services
             }
             else
             {
-                throw new Exception($"Failed to search DisplayCatalog: {DeviceFamily.ToString()} Status Code: {httpResponse.StatusCode} Returned Data: {await httpResponse.Content.ReadAsStringAsync()}");
+                throw new Exception($"Failed to search DisplayCatalog: {DeviceFamily} Status Code: {httpResponse.StatusCode} Returned Data: {await httpResponse.Content.ReadAsStringAsync()}");
             }
         }
         
@@ -242,7 +239,7 @@ namespace StoreLib.Services
             }
             else
             {
-                throw new Exception($"Failed to search DisplayCatalog: {DeviceFamily.ToString()} Status Code: {httpResponse.StatusCode} Returned Data: {await httpResponse.Content.ReadAsStringAsync()}");
+                throw new Exception($"Failed to search DisplayCatalog: {DeviceFamily} Status Code: {httpResponse.StatusCode} Returned Data: {await httpResponse.Content.ReadAsStringAsync()}");
             }
         }
     }

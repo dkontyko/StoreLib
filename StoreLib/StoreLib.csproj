@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
     <PackageId>StoreLib</PackageId>
     <Version>1.2.1</Version>
     <Authors>TitleOS</Authors>
@@ -14,6 +14,21 @@
     <PackageLicenseExpression></PackageLicenseExpression>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <LangVersion>8.0</LangVersion>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>9999</WarningLevel>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <NoWarn></NoWarn>
+    <WarningsNotAsErrors>CS0162;CS1998</WarningsNotAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <WarningLevel>9999</WarningLevel>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <NoWarn></NoWarn>
+    <WarningsNotAsErrors>CS0162;CS1998</WarningsNotAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
@@ -36,10 +51,6 @@
     <EmbeddedResource Include="Xml\WUIDRequest.xml">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
 
 </Project>
