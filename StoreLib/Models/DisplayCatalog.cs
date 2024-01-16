@@ -209,12 +209,15 @@ namespace StoreLib.Models
         [JsonPropertyName(nameof(RatingCount))]
         public long RatingCount { get; set; }
 
+        [JsonConverter(typeof(StringToLongConverter))]
         [JsonPropertyName(nameof(PurchaseCount))]
         public long PurchaseCount { get; set; }
 
+        [JsonConverter(typeof(StringToLongConverter))]
         [JsonPropertyName(nameof(TrialCount))]
         public long? TrialCount { get; set; }
 
+        [JsonConverter(typeof(StringToLongConverter))]
         [JsonPropertyName(nameof(RentalCount))]
         public long RentalCount { get; set; }
 
@@ -494,6 +497,8 @@ namespace StoreLib.Models
         [JsonPropertyName(nameof(MaxDownloadSizeInBytes))]
         public long MaxDownloadSizeInBytes { get; set; }
 
+        // TODO: Revisit whether this type should be numeric.
+        [JsonConverter(typeof(NumberToStringConverter))]
         [JsonPropertyName(nameof(MaxInstallSizeInBytes))]
         public string MaxInstallSizeInBytes { get; set; }
 
@@ -853,4 +858,53 @@ namespace StoreLib.Models
             WriteIndented = true
         };
     }
+
+    internal class StringToLongConverter : JsonConverter<long>
+    {
+        public override long Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            if (reader.TokenType == JsonTokenType.String)
+            {
+                string stringValue = reader.GetString();
+                if (long.TryParse(stringValue, out long value))
+                {
+                    return value;
+                }
+            }
+            throw new JsonException("Unable to convert JSON string to long.");
+        }
+
+        public override void Write(Utf8JsonWriter writer, long value, JsonSerializerOptions options)
+        {
+            writer.WriteStringValue(value.ToString());
+        }
+    }
+
+    internal class NumberToStringConverter : JsonConverter<string>
+    {
+        public override string Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            switch(reader.TokenType)
+            {
+                case JsonTokenType.Number:
+                    if (reader.TryGetInt64(out long longValue))
+                    {
+                        return longValue.ToString();
+                    }
+                    break;
+                case JsonTokenType.String:
+                    return reader.GetString();
+            }
+
+            // Will only be reached if the conversion failed
+            throw new JsonException("Expected a number or a string.");
+        }
+
+        public override void Write(Utf8JsonWriter writer, string value, JsonSerializerOptions options)
+        {
+            writer.WriteStringValue(value);
+        }
+    }
+
+
 }
