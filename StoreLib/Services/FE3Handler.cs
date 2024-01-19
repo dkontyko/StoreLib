@@ -27,7 +27,7 @@ namespace StoreLib.Services
         /// <returns></returns>
         public static async Task<string> SyncUpdatesAsync(string WuCategoryID, string MSAToken = null)
         {
-            HttpContent httpContent = new StringContent(String.Format(GetResourceTextFile("WUIDRequest.xml"), await GetCookieAsync(), WuCategoryID, MSAToken ?? _msaToken), Encoding.UTF8, "application/soap+xml"); //Load in the Xml for this FE3 request and format it a cookie and the provided WuCategoryID.
+            HttpContent httpContent = new StringContent(String.Format(UtilityMethods.GetResourceTextFile("WUIDRequest.xml"), await GetCookieAsync(), WuCategoryID, MSAToken ?? _msaToken), Encoding.UTF8, "application/soap+xml"); //Load in the Xml for this FE3 request and format it a cookie and the provided WuCategoryID.
             HttpRequestMessage httpRequest = new HttpRequestMessage
             {
                 RequestUri = Endpoints.FE3Delivery,
@@ -42,7 +42,7 @@ namespace StoreLib.Services
 
         public static async Task<IList<PackageInstance>> GetPackageInstancesAsync(string WuCategoryID, string MSAToken)
         {
-            HttpContent httpContent = new StringContent(String.Format(GetResourceTextFile("WUIDRequest.xml"), await GetCookieAsync(), WuCategoryID, MSAToken ?? _msaToken), Encoding.UTF8, "application/soap+xml"); //Load in the Xml for this FE3 request and format it a cookie and the provided WuCategoryID.
+            HttpContent httpContent = new StringContent(String.Format(UtilityMethods.GetResourceTextFile("WUIDRequest.xml"), await GetCookieAsync(), WuCategoryID, MSAToken ?? _msaToken), Encoding.UTF8, "application/soap+xml"); //Load in the Xml for this FE3 request and format it a cookie and the provided WuCategoryID.
             HttpRequestMessage httpRequest = new HttpRequestMessage
             {
                 RequestUri = Endpoints.FE3Delivery,
@@ -80,7 +80,7 @@ namespace StoreLib.Services
         public static async Task<String> GetCookieAsync() //Encrypted Cookie Data is needed for FE3 requests. It doesn't expire for a very long time but I still refresh it as the Store does. 
         {
             XmlDocument doc = new XmlDocument();
-            HttpContent httpContent = new StringContent(GetResourceTextFile("GetCookie.xml"), Encoding.UTF8, "application/soap+xml");//Loading the request xml from a file to keep things nice and tidy.
+            HttpContent httpContent = new StringContent(UtilityMethods.GetResourceTextFile("GetCookie.xml"), Encoding.UTF8, "application/soap+xml");//Loading the request xml from a file to keep things nice and tidy.
             HttpRequestMessage httpRequest = new HttpRequestMessage
             {
                 RequestUri = Endpoints.FE3Delivery,
@@ -128,7 +128,7 @@ namespace StoreLib.Services
             IList<Uri> uris = new List<Uri>();
             foreach (string ID in UpdateIDs)
             {
-                HttpContent httpContent = new StringContent(String.Format(GetResourceTextFile("FE3FileUrl.xml"), ID, RevisionIDs[UpdateIDs.IndexOf(ID)], MSAToken ?? _msaToken), Encoding.UTF8, "application/soap+xml");//Loading the request xml from a file to keep things nice and tidy.
+                HttpContent httpContent = new StringContent(String.Format(UtilityMethods.GetResourceTextFile("FE3FileUrl.xml"), ID, RevisionIDs[UpdateIDs.IndexOf(ID)], MSAToken ?? _msaToken), Encoding.UTF8, "application/soap+xml");//Loading the request xml from a file to keep things nice and tidy.
                 HttpRequestMessage httpRequest = new HttpRequestMessage
                 {
                     RequestUri = Endpoints.FE3DeliverySecured,
@@ -154,29 +154,5 @@ namespace StoreLib.Services
             }
             return uris;
         }
-
-        /// <summary>
-        /// Internal function used to read premade xml. 
-        /// </summary>
-        /// <param name="filename"></param>
-        /// <returns></returns>
-        private static string GetResourceTextFile(string filename)
-        {
-            string result = string.Empty;
-
-            using (Stream stream = Assembly.GetExecutingAssembly().
-                       GetManifestResourceStream("StoreLib.Xml." + filename))
-            {
-                using StreamReader sr = new StreamReader(stream);
-                result = sr.ReadToEnd();
-            }
-            return result;
-        }
-
-
-
-
-
     }
-
 }
